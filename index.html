@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Happy Birthday Anbi! 🎂</title>
+    <!-- Premium Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Pre-recorded MP3 Voice for Shinchan Greeting -->
+    <audio id="shinchanVoice" preload="auto">
+    <source src="assets/audio/voice.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Outer Presentation Wrapper (Centers the mobile mockup on desktop screens) -->
+    <div id="app-wrapper">
+        
+        <!-- High-Performance Interactive Background Canvas -->
+        <canvas id="magic-canvas"></canvas>
+
+        <!-- Premium Floating Music Controller -->
+        <button id="music-toggle" class="music-btn" aria-label="Toggle Music" disabled>
+            <svg class="music-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 18V5l12-2v13"></path>
+                <circle cx="6" cy="18" r="3"></circle>
+                <circle cx="18" cy="16" r="3"></circle>
+            </svg>
+            <div class="music-waves">
+                <span class="wave-bar"></span>
+                <span class="wave-bar"></span>
+                <span class="wave-bar"></span>
+            </div>
+        </button>
+
+        <!-- ========================================== -->
+        <!-- STATE 0: THE MAGIC UNLOCKER / LOADER PANEL -->
+        <!-- ========================================== -->
+        <div id="loader-panel" class="panel active">
+            <div class="loader-content">
+                <div class="magic-sphere">
+                    <div class="sphere-core"></div>
+                    <div class="sphere-glow"></div>
+                    <div class="sphere-orbit"></div>
+                </div>
+                <h1 class="loader-title">Anbi's Magic</h1>
+                <p class="loader-subtitle">Preparing the Celebration...</p>
+                
+                <div class="progress-container">
+                    <div class="progress-bar" id="load-progress"></div>
+                </div>
+                
+                <button id="unlock-btn" class="glow-button hidden">
+                    <span>Unlock the Magic</span>
+                    <svg class="btn-sparkle" viewBox="0 0 24 24">
+                        <path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2Z" fill="currentColor"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- STATE 1: THE PITCH-BLACK CINEMATIC OPENING -->
+        <!-- ========================================== -->
+        <div id="scene-1-panel" class="panel">
+            <div class="opening-spotlight" id="opening-spotlight"></div>
+            
+            <!-- Shinchan's Cinematic Walk Track -->
+            <div id="shinchan-track" class="walk-track">
+                
+                <!-- Shinchan Speech Bubble -->
+                <div id="shinchan-bubble" class="speech-bubble hidden">
+                    <p class="speech-text">Happy Birthday Anbi! 🎉</p>
+                    <div class="bubble-arrow"></div>
+                </div>
+
+                <!-- Vector SVG Shinchan Character -->
+                <div class="character-container shinchan" id="shinchan-opening">
+                    <svg viewBox="0 0 110 145" class="character-svg">
+                        <!-- Waving/Dangling Arm Left (Behind body) -->
+                        <path class="shin-arm-left" d="M 85,88 C 95,92 105,102 100,110 C 96,115 88,102 85,95" fill="#E63946" stroke="#222" stroke-width="2"/>
+                        <circle class="shin-hand-left" cx="101" cy="110" r="5" fill="#FCD3B1" stroke="#222" stroke-width="1.5"/>
+
+                        <!-- Left Leg -->
+                        <g class="shin-leg-left">
+                            <rect x="42" y="122" width="8" height="10" fill="#FCD3B1" stroke="#222" stroke-width="1.5"/>
+                            <rect x="37" y="131" width="14" height="6" fill="#4361EE" rx="3" stroke="#222" stroke-width="1.5"/>
+                        </g>
+                        <!-- Right Leg -->
+                        <g class="shin-leg-right">
+                            <rect x="62" y="122" width="8" height="10" fill="#FCD3B1" stroke="#222" stroke-width="1.5"/>
+                            <rect x="60" y="131" width="14" height="6" fill="#4361EE" rx="3" stroke="#222" stroke-width="1.5"/>
+                        </g>
+
+                        <!-- Red T-Shirt -->
+                        <path d="M 33,82 L 78,82 L 78,110 L 33,110 Z" fill="#E63946" stroke="#222" stroke-width="2"/>
+                        <!-- Yellow Shorts -->
+                        <path d="M 33,110 L 78,110 L 74,122 L 37,122 Z" fill="#F9C74F" stroke="#222" stroke-width="2"/>
+
+                        <!-- Shinchan's Head Base with iconic cheeky curve -->
+                        <path d="M 23,60 C 23,32 45,24 65,24 C 80,24 95,35 95,55 C 95,75 88,85 73,85 C 65,85 55,92 40,92 C 25,92 23,78 23,60 Z" fill="#FCD3B1" stroke="#222" stroke-width="2"/>
+                        <!-- Left Ear -->
+                        <circle cx="23" cy="58" r="7" fill="#FCD3B1" stroke="#222" stroke-width="1.5"/>
+
+                        <!-- Rosy Pink Cheeks -->
+                        <circle cx="34" cy="59" r="8" fill="#FFA3A8" opacity="0.75"/>
+                        <circle cx="82" cy="57" r="8" fill="#FFA3A8" opacity="0.75"/>
+
+                        <!-- Big Expressive Eyes (Blinking group) -->
+                        <g class="shin-eyes">
+                            <!-- Left Eye -->
+                            <g class="shin-eye-left">
+                                <ellipse cx="45" cy="42" rx="6.5" ry="9" fill="#fff" stroke="#222" stroke-width="2"/>
+                                <ellipse cx="46" cy="42" rx="2.5" ry="5.5" fill="#111"/>
+                                <circle cx="45.5" cy="39" r="1" fill="#fff"/>
+                            </g>
+                            <!-- Right Eye -->
+                            <g class="shin-eye-right">
+                                <ellipse cx="71" cy="40" rx="6.5" ry="9" fill="#fff" stroke="#222" stroke-width="2"/>
+                                <ellipse cx="70" cy="40" rx="2.5" ry="5.5" fill="#111"/>
+                                <circle cx="69.5" cy="37" r="1" fill="#fff"/>
+                            </g>
+                        </g>
+
+                        <!-- Bold Thick Eyebrows -->
+                        <path class="shin-eyebrow-left" d="M 32,31 Q 42,21 51,26" stroke="#111" stroke-width="6.5" stroke-linecap="round" fill="none" />
+                        <path class="shin-eyebrow-right" d="M 64,26 Q 73,19 82,24" stroke="#111" stroke-width="6.5" stroke-linecap="round" fill="none" />
+
+                        <!-- Lip-Sync Oscillating Mouth -->
+                        <ellipse id="shin-mouth" cx="58" cy="65" rx="5" ry="2" fill="#901A31" stroke="#222" stroke-width="1.5"/>
+
+                        <!-- Waving Arm Right (Foreground) -->
+                        <g class="shin-arm-right">
+                            <path d="M 33,88 C 23,85 11,68 18,59 C 22,53 31,64 33,74" fill="#E63946" stroke="#222" stroke-width="2"/>
+                            <circle cx="16" cy="58" r="6" fill="#FCD3B1" stroke="#222" stroke-width="1.5"/>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Transition Button (Fades in after Shinchan speaks) -->
+            <button id="enter-park-btn" class="glow-button cinematic-next hidden">
+                <span>Enter Magical Park</span>
+                <svg class="btn-arrow" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- STATE 2: THE MAGICAL BIRTHDAY PARK PANEL -->
+        <!-- ========================================== -->
+        <div id="scene-2-panel" class="panel">
+            
+            <!-- Cinematic Background Layers (Parallax Space/Sky) -->
+            <div class="park-sky">
+                <div class="light-rays"></div>
+                <div class="scrolling-clouds">
+                    <div class="cloud cloud-1"></div>
+                    <div class="cloud cloud-2"></div>
+                </div>
+            </div>
+
+            <!-- Parallax Foreground Stage Hills -->
+            <div class="park-hills">
+                <div class="hill far-hill"></div>
+                <div class="hill mid-hill"></div>
+                <div class="hill stage-floor"></div>
+            </div>
+
+            <!-- Floating Balloons Container (Spawns continuously via JS) -->
+            <div id="balloons-container"></div>
+
+            <!-- Floating Ice Cream Decorations (Floating absolutely) -->
+            <div id="icecream-container">
+                <!-- Strawberry Soft Serve -->
+                <div class="floating-icecream" style="top: 15%; left: 10%; animation-delay: 0s;">
+                    <svg viewBox="0 0 60 90" width="40" height="60">
+                        <path d="M 15,45 Q 30,10 45,45 Z" fill="#FFA3A8"/>
+                        <path d="M 12,45 C 12,38 48,38 48,45 Z" fill="#FFB7C5"/>
+                        <path d="M 20,35 Q 30,20 40,35 Z" fill="#FFF"/>
+                        <polygon points="15,45 45,45 30,85" fill="#DDB892" stroke="#B08968" stroke-width="1"/>
+                        <circle cx="30" cy="15" r="4" fill="#E63946" class="glowing-cherry"/>
+                    </svg>
+                </div>
+                <!-- Chocolate Sundae -->
+                <div class="floating-icecream" style="top: 25%; right: 12%; animation-delay: 1.5s;">
+                    <svg viewBox="0 0 60 90" width="42" height="63">
+                        <path d="M 15,15 L 45,15 L 40,55 L 20,55 Z" fill="#FFF" opacity="0.2" stroke="#FFF" stroke-width="1.5"/>
+                        <path d="M 16,18 C 22,2 38,2 44,18 Z" fill="#7F5539"/>
+                        <path d="M 18,30 C 24,15 36,15 42,30 Z" fill="#DDB892"/>
+                        <rect x="27" y="55" width="6" height="25" fill="#FFF" opacity="0.5"/>
+                        <ellipse cx="30" cy="80" rx="15" ry="4" fill="#FFF" opacity="0.5"/>
+                        <circle cx="30" cy="5" r="3" fill="#E63946"/>
+                    </svg>
+                </div>
+                <!-- Rainbow Popsicle -->
+                <div class="floating-icecream" style="top: 45%; left: 8%; animation-delay: 3s;">
+                    <svg viewBox="0 0 50 85" width="35" height="60">
+                        <rect x="12" y="10" width="26" height="45" rx="13" fill="#FF9F1C"/>
+                        <rect x="12" y="25" width="26" height="30" fill="#FFBF69"/>
+                        <rect x="12" y="40" width="26" height="15" fill="#2EC4B6"/>
+                        <rect x="21" y="55" width="8" height="22" rx="3" fill="#DDB892"/>
+                    </svg>
+                </div>
+                <!-- Gelato Cup -->
+                <div class="floating-icecream" style="top: 52%; right: 10%; animation-delay: 2.2s;">
+                    <svg viewBox="0 0 60 75" width="42" height="52">
+                        <ellipse cx="22" cy="30" rx="12" ry="12" fill="#AEC6CF"/>
+                        <ellipse cx="38" cy="30" rx="12" ry="12" fill="#E0B0FF"/>
+                        <path d="M 10,32 L 50,32 L 45,65 L 15,65 Z" fill="#FFF" stroke="#FFB7C5" stroke-width="2"/>
+                        <line x1="10" y1="42" x2="50" y2="42" stroke="#FFB7C5" stroke-width="2"/>
+                        <path d="M 42,30 L 52,10 L 55,12 Z" fill="#CCC"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Character Stage Playground -->
+            <div id="stage-characters">
+
+                <!-- 1. Shinchan (Left middle) -->
+                <div class="stage-character hidden" id="char-shinchan" style="left: 6%; bottom: 6%; --char-z: 15;">
+                    <!-- Speech Bubble -->
+                    <div class="char-bubble hidden">Aloo Le Lo! 🥔</div>
+                    <!-- Reuse Same Shinchan SVG structure but styled for Stage interactions -->
+                    <svg viewBox="0 0 110 145" class="character-svg">
+                        <!-- Waving/Dangling Arm Left (Behind body) -->
+                        <path class="shin-arm-left" d="M 85,88 C 95,92 105,102 100,110 C 96,115 88,102 85,95" fill="#E63946" stroke="#222" stroke-width="2"/>
+                        <circle class="shin-hand-left" cx="101" cy="110" r="5" fill="#FCD3B1" stroke="#222" stroke-width="1.5"/>
+
+                        <!-- Left/Right Legs -->
+                        <g class="shin-leg-left"><rect x="42" y="122" width="8" height="10" fill="#FCD3B1" stroke="#222" stroke-width="1.5"/><rect x="37" y="131" width="14" height="6" fill="#4361EE" rx="3" stroke="#222" stroke-width="1.5"/></g>
+                        <g class="shin-leg-right"><rect x="62" y="122" width="8" height="10" fill="#FCD3B1" stroke="#222" stroke-width="1.5"/><rect x="60" y="131" width="14" height="6" fill="#4361EE" rx="3" stroke="#222" stroke-width="1.5"/></g>
+
+                        <!-- Torso & Shorts -->
+                        <path d="M 33,82 L 78,82 L 78,110 L 33,110 Z" fill="#E63946" stroke="#222" stroke-width="2"/>
+                        <path d="M 33,110 L 78,110 L 74,122 L 37,122 Z" fill="#F9C74F" stroke="#222" stroke-width="2"/>
+
+                        <!-- Cheeky Head -->
+                        <path d="M 23,60 C 23,32 45,24 65,24 C 80,24 95,35 95,55 C 95,75 88,85 73,85 C 65,85 55,92 40,92 C 25,92 23,78 23,60 Z" fill="#FCD3B1" stroke="#222" stroke-width="2"/>
+                        <circle cx="23" cy="58" r="7" fill="#FCD3B1" stroke="#222" stroke-width="1.5"/>
+                        <circle cx="34" cy="59" r="8" fill="#FFA3A8" opacity="0.75"/>
+                        <circle cx="82" cy="57" r="8" fill="#FFA3A8" opacity="0.75"/>
+
+                        <g class="shin-eyes">
+                            <g class="shin-eye-left">
+                                <ellipse cx="45" cy="42" rx="6.5" ry="9" fill="#fff" stroke="#222" stroke-width="2"/>
+                                <ellipse cx="46" cy="42" rx="2.5" ry="5.5" fill="#111"/><circle cx="45.5" cy="39" r="1" fill="#fff"/>
+                            </g>
+                            <g class="shin-eye-right">
+                                <ellipse cx="71" cy="40" rx="6.5" ry="9" fill="#fff" stroke="#222" stroke-width="2"/>
+                                <ellipse cx="70" cy="40" rx="2.5" ry="5.5" fill="#111"/><circle cx="69.5" cy="37" r="1" fill="#fff"/>
+                            </g>
+                        </g>
+
+                        <path class="shin-eyebrow-left" d="M 32,31 Q 42,21 51,26" stroke="#111" stroke-width="6.5" stroke-linecap="round" fill="none" />
+                        <path class="shin-eyebrow-right" d="M 64,26 Q 73,19 82,24" stroke="#111" stroke-width="6.5" stroke-linecap="round" fill="none" />
+                        <ellipse cx="58" cy="65" rx="5" ry="2.5" fill="#901A31" stroke="#222" stroke-width="1.5"/>
+
+                        <g class="shin-arm-right">
+                            <path d="M 33,88 C 23,85 11,68 18,59 C 22,53 31,64 33,74" fill="#E63946" stroke="#222" stroke-width="2"/>
+                            <circle cx="16" cy="58" r="6" fill="#FCD3B1" stroke="#222" stroke-width="1.5"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <!-- 2. Doraemon (Left back row) -->
+                <div class="stage-character hidden" id="char-doraemon" style="left: 28%; bottom: 12%; --char-z: 11;">
+                    <div class="char-bubble hidden">Doracake party! 🥞</div>
+                    <svg viewBox="0 0 100 125" class="character-svg">
+                        <!-- Left Arm -->
+                        <g class="dor-arm-left">
+                            <line x1="26" y1="84" x2="11" y2="92" stroke="#0096C7" stroke-width="10" stroke-linecap="round"/>
+                            <circle cx="9" cy="94" r="6" fill="#fff" stroke="#222" stroke-width="1.5"/>
+                        </g>
+
+                        <!-- Blue Body Base -->
+                        <rect x="25" y="77" width="50" height="38" fill="#0096C7" stroke="#222" stroke-width="2" rx="10"/>
+                        <!-- White Pocket Area -->
+                        <circle cx="50" cy="95" r="18" fill="#fff" stroke="#222" stroke-width="1.5"/>
+                        <path d="M 36,95 Q 50,111 64,95 Z" fill="#fff" stroke="#222" stroke-width="1.5"/>
+
+                        <!-- Feet -->
+                        <ellipse cx="38" cy="116" rx="12" ry="6" fill="#fff" stroke="#222" stroke-width="1.5"/>
+                        <ellipse cx="62" cy="116" rx="12" ry="6" fill="#fff" stroke="#222" stroke-width="1.5"/>
+
+                        <!-- Big Blue Head -->
+                        <circle cx="50" cy="45" r="35" fill="#0096C7" stroke="#222" stroke-width="2"/>
+                        <!-- White Face Inner -->
+                        <circle cx="50" cy="50" r="27" fill="#fff" stroke="#222" stroke-width="1.5"/>
+
+                        <!-- Collar & Bell -->
+                        <path d="M 27,76 Q 50,83 73,76" stroke="#E63946" stroke-width="6.5" fill="none" stroke-linecap="round"/>
+                        <circle cx="50" cy="81" r="5.5" fill="#FFD700" stroke="#222" stroke-width="1.5"/>
+                        <circle cx="50" cy="83.5" r="2" fill="#111"/>
+
+                        <!-- Eyes -->
+                        <g class="dor-eyes">
+                            <g class="dor-eye-left">
+                                <ellipse cx="44" cy="34" rx="6" ry="8.5" fill="#fff" stroke="#222" stroke-width="2"/>
+                                <ellipse cx="45" cy="34" rx="2" ry="4.5" fill="#111"/>
+                            </g>
+                            <g class="dor-eye-right">
+                                <ellipse cx="56" cy="34" rx="6" ry="8.5" fill="#fff" stroke="#222" stroke-width="2"/>
+                                <ellipse cx="55" cy="34" rx="2" ry="4.5" fill="#111"/>
+                            </g>
+                        </g>
+
+                        <!-- Red Nose -->
+                        <circle cx="50" cy="42" r="5" fill="#E63946" stroke="#222" stroke-width="1.5"/>
+                        <!-- Whiskers -->
+                        <line x1="38" y1="46" x2="22" y2="44" stroke="#111" stroke-width="1.8" stroke-linecap="round"/>
+                        <line x1="38" y1="51" x2="20" y2="51" stroke="#111" stroke-width="1.8" stroke-linecap="round"/>
+                        <line x1="38" y1="56" x2="22" y2="58" stroke="#111" stroke-width="1.8" stroke-linecap="round"/>
+                        <line x1="62" y1="46" x2="78" y2="44" stroke="#111" stroke-width="1.8" stroke-linecap="round"/>
+                        <line x1="62" y1="51" x2="80" y2="51" stroke="#111" stroke-width="1.8" stroke-linecap="round"/>
+                        <line x1="62" y1="56" x2="78" y2="58" stroke="#111" stroke-width="1.8" stroke-linecap="round"/>
+
+                        <!-- Mouth & Nose-to-Mouth line -->
+                        <line x1="50" y1="47" x2="50" y2="59" stroke="#111" stroke-width="1.5"/>
+                        <path d="M 38,50 Q 50,68 62,50" fill="none" stroke="#222" stroke-width="2.5" stroke-linecap="round"/>
+
+                        <!-- Right Arm (Waving) -->
+                        <g class="dor-arm-right">
+                            <line x1="74" y1="84" x2="88" y2="72" stroke="#0096C7" stroke-width="10" stroke-linecap="round"/>
+                            <circle cx="90" cy="70" r="6" fill="#fff" stroke="#222" stroke-width="1.5"/>
+                        </g>
+
+                        <!-- Spinning Bamboo Copter on Head -->
+                        <g class="bamboo-copter">
+                            <line x1="50" y1="10" x2="50" y2="1" stroke="#F9C74F" stroke-width="4.5"/>
+                            <g class="copter-blade">
+                                <ellipse cx="50" cy="1" rx="22" ry="3.5" fill="#F9C74F" stroke="#222" stroke-width="1"/>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+
+                <!-- 3. Ninja Hattori (Right back row) -->
+                <div class="stage-character hidden" id="char-hattori" style="left: 54%; bottom: 14%; --char-z: 10;">
+                    <div class="char-bubble hidden">Nin-nin! ⚔️</div>
+                    <!-- Smoke Puff Cloud for Ninja entrance -->
+                    <div class="ninja-smoke-cloud hidden"></div>
+                    <svg viewBox="0 0 100 125" class="character-svg">
+                        <!-- Ninja Sword on Back -->
+                        <g class="ninja-sword">
+                            <rect x="18" y="52" width="7" height="30" fill="#222" transform="rotate(-30, 18, 52)" stroke="#fff" stroke-width="1.5"/>
+                            <rect x="14" y="48" width="15" height="4" fill="#E63946" transform="rotate(-30, 18, 52)" stroke="#111" stroke-width="1"/>
+                        </g>
+
+                        <!-- Body & Legs -->
+                        <path d="M 32,82 L 68,82 L 64,110 L 36,110 Z" fill="#3A86C8" stroke="#222" stroke-width="2"/>
+                        <rect x="34" y="94" width="32" height="4.5" fill="#F9C74F" stroke="#222" stroke-width="1.5"/>
+                        
+                        <g class="ninja-leg-left"><rect x="40" y="110" width="8" height="8" fill="#3A86C8" stroke="#222" stroke-width="1.5"/><rect x="36" y="118" width="12" height="4.5" fill="#E63946" rx="1.5" stroke="#222" stroke-width="1.5"/></g>
+                        <g class="ninja-leg-right"><rect x="52" y="110" width="8" height="8" fill="#3A86C8" stroke="#222" stroke-width="1.5"/><rect x="52" y="118" width="12" height="4.5" fill="#E63946" rx="1.5" stroke="#222" stroke-width="1.5"/></g>
+
+                        <!-- Blue Hood & White Ninja Mask opening -->
+                        <circle cx="50" cy="45" r="32" fill="#3A86C8" stroke="#222" stroke-width="2"/>
+                        <ellipse cx="50" cy="48" rx="23" ry="19.5" fill="#fff" stroke="#222" stroke-width="1.5"/>
+
+                        <!-- Signature Red/White Striped Collar Scarf -->
+                        <path d="M 28,76 L 72,76 L 66,82 L 34,82 Z" fill="#E63946" stroke="#222" stroke-width="1.5"/>
+
+                        <!-- Star Emblem on Hood -->
+                        <polygon points="50,15 53,22 61,23 55,28 57,36 50,31 43,36 45,28 39,23 47,22" fill="#fff" stroke="#222" stroke-width="1"/>
+
+                        <!-- Round Ninja Eyes -->
+                        <g class="ninja-eyes">
+                            <g class="ninja-eye-left">
+                                <circle cx="41" cy="45" r="5" fill="#fff" stroke="#222" stroke-width="1.5"/>
+                                <circle cx="41" cy="45" r="2" fill="#111"/>
+                            </g>
+                            <g class="ninja-eye-right">
+                                <circle cx="59" cy="45" r="5" fill="#fff" stroke="#222" stroke-width="1.5"/>
+                                <circle cx="59" cy="45" r="2" fill="#111"/>
+                            </g>
+                        </g>
+
+                        <!-- Spiral Red Cheek Cheerful details -->
+                        <path class="ninja-spiral-left" d="M 33,56 Q 30,59 34,61 Q 38,62 38,58 Q 36,55 33,56" fill="none" stroke="#E63946" stroke-width="2" stroke-linecap="round"/>
+                        <path class="ninja-spiral-right" d="M 67,56 Q 70,59 66,61 Q 62,62 62,58 Q 64,55 67,56" fill="none" stroke="#E63946" stroke-width="2" stroke-linecap="round"/>
+
+                        <!-- Nose and Smile -->
+                        <circle cx="50" cy="49" r="2" fill="#E63946"/>
+                        <path d="M 43,56 Q 50,62 57,56" fill="none" stroke="#222" stroke-width="2" stroke-linecap="round"/>
+
+                        <!-- Red Ninja Arms/Hands -->
+                        <g class="ninja-arm-left">
+                            <circle cx="28" cy="94" r="5.5" fill="#FCD3B1" stroke="#222" stroke-width="1.5"/>
+                        </g>
+                        <g class="ninja-arm-right">
+                            <circle cx="72" cy="94" r="5.5" fill="#FCD3B1" stroke="#222" stroke-width="1.5"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <!-- 4. Chhota Bheem (Right middle) -->
+                <div class="stage-character hidden" id="char-bheem" style="left: 74%; bottom: 6%; --char-z: 14;">
+                    <div class="char-bubble hidden">Bheem ki Shakti! 💪</div>
+                    <svg viewBox="0 0 100 125" class="character-svg">
+                        <!-- Muscular Body Torso -->
+                        <path d="M 38,72 L 62,72 L 58,95 L 42,95 Z" fill="#F8B185" stroke="#222" stroke-width="2"/>
+                        <!-- Chest details -->
+                        <path d="M 44,78 Q 50,83 56,78" fill="none" stroke="#222" stroke-width="1.5"/>
+
+                        <!-- Orange Dhoti -->
+                        <path d="M 38,95 L 62,95 L 66,112 C 66,118 34,118 34,112 Z" fill="#F3722C" stroke="#222" stroke-width="2"/>
+                        <rect x="36" y="93" width="28" height="3.5" fill="#FFD700" stroke="#222" stroke-width="1"/>
+
+                        <!-- Legs -->
+                        <g class="bheem-leg-left"><rect x="42" y="112" width="6" height="6" fill="#F8B185" stroke="#222" stroke-width="1.5"/><rect x="39" y="118" width="10" height="3.5" fill="#F8B185" rx="1.5" stroke="#222" stroke-width="1.5"/></g>
+                        <g class="bheem-leg-right"><rect x="52" y="112" width="6" height="6" fill="#F8B185" stroke="#222" stroke-width="1.5"/><rect x="51" y="118" width="10" height="3.5" fill="#F8B185" rx="1.5" stroke="#222" stroke-width="1.5"/></g>
+
+                        <!-- Head with Short Dark Spiky Hair -->
+                        <path d="M 22,40 C 22,12 78,12 78,40 C 78,25 68,20 50,20 C 32,20 22,25 22,40 Z" fill="#4A2810" stroke="#222" stroke-width="1"/>
+                        <circle cx="50" cy="46" r="26" fill="#F8B185" stroke="#222" stroke-width="2"/>
+                        <path d="M 24,40 C 20,44 24,52 26,52" stroke="#4A2810" stroke-width="4.5" stroke-linecap="round"/>
+                        <path d="M 76,40 C 80,44 76,52 74,52" stroke="#4A2810" stroke-width="4.5" stroke-linecap="round"/>
+
+                        <!-- Bheem's Traditional Forehead Tilka -->
+                        <line x1="50" y1="24" x2="50" y2="34" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
+                        <circle cx="50" cy="31" r="2.5" fill="#E63946"/>
+
+                        <!-- Eyes & Large Happy Smile -->
+                        <g class="bheem-eyes">
+                            <g class="bheem-eye-left">
+                                <circle cx="41" cy="43" r="5" fill="#fff" stroke="#222" stroke-width="1.5"/>
+                                <circle cx="41" cy="43" r="2" fill="#111"/>
+                            </g>
+                            <g class="bheem-eye-right">
+                                <circle cx="59" cy="43" r="5" fill="#fff" stroke="#222" stroke-width="1.5"/>
+                                <circle cx="59" cy="43" r="2" fill="#111"/>
+                            </g>
+                        </g>
+                        <path d="M 42,54 Q 50,62 58,54" fill="none" stroke="#222" stroke-width="2.5" stroke-linecap="round"/>
+
+                        <!-- Left Arm (Flexing muscle) -->
+                        <g class="bheem-arm-left">
+                            <path d="M 38,74 C 26,74 19,59 24,53 C 28,49 38,62 38,72" fill="#F8B185" stroke="#222" stroke-width="1.5"/>
+                        </g>
+
+                        <!-- Right Arm (Holding Delicious Gold Laddus!) -->
+                        <g class="bheem-arm-right">
+                            <path d="M 62,74 C 74,74 81,82 75,88 C 71,92 64,84 62,72" fill="#F8B185" stroke="#222" stroke-width="1.5"/>
+                            <ellipse cx="76" cy="84" rx="10.5" ry="4" fill="#FFD700" stroke="#222" stroke-width="1.5"/>
+                            <circle cx="72" cy="80" r="3" fill="#F9C74F" stroke="#222" stroke-width="1"/>
+                            <circle cx="76" cy="77" r="3.5" fill="#F9C74F" stroke="#222" stroke-width="1"/>
+                            <circle cx="80" cy="80" r="3" fill="#F9C74F" stroke="#222" stroke-width="1"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <!-- 5. Motu (Front row center-left) -->
+                <div class="stage-character hidden" id="char-motu" style="left: 20%; bottom: 2%; --char-z: 20;">
+                    <div class="char-bubble hidden">Samosa is love! 🥟</div>
+                    <svg viewBox="0 0 110 125" class="character-svg">
+                        <!-- Red Open Vest (Behind tummy) -->
+                        <path d="M 30,70 C 30,60 42,55 45,64 C 42,80 34,95 30,95 Z" fill="#E63946" stroke="#222" stroke-width="1.5"/>
+                        <path d="M 80,70 C 80,60 68,55 65,64 C 68,80 76,95 80,95 Z" fill="#E63946" stroke="#222" stroke-width="1.5"/>
+
+                        <!-- Massive Round Yellow Kurta Tummy -->
+                        <circle cx="55" cy="85" r="31" fill="#F9C74F" stroke="#222" stroke-width="2.5"/>
+
+                        <!-- Blue Pants & Feet -->
+                        <path d="M 30,105 L 80,105 L 75,118 L 35,118 Z" fill="#4361EE" stroke="#222" stroke-width="2"/>
+                        <rect x="37" y="118" width="11" height="5" fill="#111" rx="2.5"/>
+                        <rect x="62" y="118" width="11" height="5" fill="#111" rx="2.5"/>
+
+                        <!-- Arms & Hands -->
+                        <g class="motu-arm-left">
+                            <path d="M 28,72 Q 13,75 16,85" fill="none" stroke="#F9C74F" stroke-width="9" stroke-linecap="round"/>
+                            <circle cx="16" cy="85" r="4.5" fill="#FCD3B1" stroke="#222" stroke-width="1"/>
+                        </g>
+                        <g class="motu-arm-right">
+                            <path d="M 82,72 Q 97,75 94,85" fill="none" stroke="#F9C74F" stroke-width="9" stroke-linecap="round"/>
+                            <circle cx="94" cy="85" r="4.5" fill="#FCD3B1" stroke="#222" stroke-width="1"/>
+                        </g>
+
+                        <!-- Funny Bald Head with 3 hairs -->
+                        <circle cx="55" cy="42" r="22" fill="#FCD3B1" stroke="#222" stroke-width="2"/>
+                        <path d="M 55,20 Q 52,13 47,14" fill="none" stroke="#111" stroke-width="1.8" stroke-linecap="round"/>
+                        <path d="M 55,20 Q 55,10 56,10" fill="none" stroke="#111" stroke-width="1.8" stroke-linecap="round"/>
+                        <path d="M 55,20 Q 58,13 63,14" fill="none" stroke="#111" stroke-width="1.8" stroke-linecap="round"/>
+
+                        <!-- Big Mustache & Eyes -->
+                        <g class="motu-eyes">
+                            <circle cx="48" cy="38" r="4" fill="#fff" stroke="#222" stroke-width="1.2"/>
+                            <circle cx="48" cy="38" r="1.5" fill="#111"/>
+                            <circle cx="62" cy="38" r="4" fill="#fff" stroke="#222" stroke-width="1.2"/>
+                            <circle cx="62" cy="38" r="1.5" fill="#111"/>
+                        </g>
+                        <!-- Majestic Mustache curves -->
+                        <path d="M 55,45 Q 39,43 34,36 Q 41,47 55,46" fill="#111" stroke="#222" stroke-width="1"/>
+                        <path d="M 55,45 Q 71,43 76,36 Q 69,47 55,46" fill="#111" stroke="#222" stroke-width="1"/>
+                        
+                        <!-- Laughing mouth -->
+                        <path d="M 48,48 Q 55,56 62,48" fill="none" stroke="#E63946" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+
+                <!-- 6. Patlu (Front row center-right) -->
+                <div class="stage-character hidden" id="char-patlu" style="left: 48%; bottom: 1%; --char-z: 21;">
+                    <div class="char-bubble hidden">Idea! 💡</div>
+                    <svg viewBox="0 0 90 125" class="character-svg">
+                        <!-- Thin Kurta & Red Tight Pants -->
+                        <rect x="35" y="58" width="20" height="36" fill="#F9C74F" stroke="#222" stroke-width="2" rx="4"/>
+                        <rect x="35" y="94" width="20" height="20" fill="#E63946" stroke="#222" stroke-width="2" rx="2"/>
+
+                        <!-- Thin legs and Shoes -->
+                        <rect x="38" y="114" width="6" height="5" fill="#222"/>
+                        <rect x="46" y="114" width="6" height="5" fill="#222"/>
+                        <rect x="35" y="118" width="10" height="4" fill="#555" rx="1.5" stroke="#222" stroke-width="1"/>
+                        <rect x="45" y="118" width="10" height="4" fill="#555" rx="1.5" stroke="#222" stroke-width="1"/>
+
+                        <!-- Thin Arms & Hands -->
+                        <g class="patlu-arm-left">
+                            <path d="M 35,62 Q 21,65 23,75" fill="none" stroke="#FCD3B1" stroke-width="6.5" stroke-linecap="round"/>
+                            <circle cx="23" cy="75" r="4.2" fill="#FCD3B1" stroke="#222" stroke-width="1"/>
+                        </g>
+                        <g class="patlu-arm-right">
+                            <path d="M 55,62 Q 69,65 67,75" fill="none" stroke="#FCD3B1" stroke-width="6.5" stroke-linecap="round"/>
+                            <circle cx="67" cy="75" r="4.2" fill="#FCD3B1" stroke="#222" stroke-width="1"/>
+                        </g>
+
+                        <!-- Long Oval Face with Glasses -->
+                        <ellipse cx="45" cy="38" rx="16.5" ry="20.5" fill="#FCD3B1" stroke="#222" stroke-width="2"/>
+                        <path d="M 45,18 Q 48,9 52,13" fill="none" stroke="#111" stroke-width="1.8" stroke-linecap="round"/>
+
+                        <!-- Huge Round Spectacles -->
+                        <g class="patlu-glasses">
+                            <circle cx="36" cy="36" r="8.5" fill="none" stroke="#111" stroke-width="2.5"/>
+                            <circle cx="54" cy="36" r="8.5" fill="none" stroke="#111" stroke-width="2.5"/>
+                            <line x1="40" y1="36" x2="50" y2="36" stroke="#111" stroke-width="2.5"/>
+                            <circle cx="36" cy="36" r="2.2" fill="#111"/>
+                            <circle cx="54" cy="36" r="2.2" fill="#111"/>
+                        </g>
+
+                        <!-- Nose and Smile -->
+                        <path d="M 45,36 Q 48,42 45,44" fill="none" stroke="#111" stroke-width="1.5"/>
+                        <path d="M 39,48 Q 45,54 51,48" fill="none" stroke="#222" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+
+            </div>
+
+            <!-- Majestic Celebration Action Button at Bottom Center -->
+            <div id="park-actions">
+                <button id="wish-btn" class="glow-button pulse-effect">
+                    <span>Make a Wish ✨</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- STATE 3: THE GRAND FINALE SCREEN (OVERLAY) -->
+        <!-- ========================================== -->
+        <div id="finale-panel" class="panel">
+            
+            <!-- Rising Spectacular Multi-Tiered Cake -->
+            <div id="birthday-cake" class="hidden">
+                <svg viewBox="0 0 160 180" class="cake-svg">
+                    <!-- Base Stand -->
+                    <path d="M 20,150 L 140,150 L 130,165 L 30,165 Z" fill="#DDD" stroke="#222" stroke-width="2"/>
+                    <ellipse cx="80" cy="150" rx="60" ry="8" fill="#FFF" stroke="#222" stroke-width="2"/>
+
+                    <!-- Bottom Tier -->
+                    <rect x="30" y="105" width="100" height="45" fill="#FFA3A8" stroke="#222" stroke-width="2.5" rx="8"/>
+                    <!-- Cream Frosting Drips -->
+                    <path d="M 30,105 Q 40,120 50,105 Q 60,120 70,105 Q 80,120 90,105 Q 100,120 110,105 Q 120,120 130,105 L 130,115 L 30,115 Z" fill="#FFF"/>
+                    <!-- Small Sparkly Sprinkles on Tier 1 -->
+                    <circle cx="45" cy="130" r="3" fill="#FFD700"/><circle cx="70" cy="135" r="3" fill="#E0B0FF"/><circle cx="95" cy="128" r="3" fill="#AEC6CF"/><circle cx="115" cy="132" r="3" fill="#FFF"/>
+
+                    <!-- Top Tier -->
+                    <rect x="45" y="70" width="70" height="35" fill="#E0B0FF" stroke="#222" stroke-width="2" rx="6"/>
+                    <path d="M 45,70 Q 52,82 60,70 Q 67,82 75,70 Q 82,82 90,70 Q 97,82 105,70 Q 112,82 115,70 L 115,77 L 45,77 Z" fill="#FFF"/>
+                    <circle cx="58" cy="90" r="2.5" fill="#FFB7C5"/><circle cx="80" cy="88" r="2.5" fill="#FFD700"/><circle cx="102" cy="91" r="2.5" fill="#AEC6CF"/>
+
+                    <!-- Glowing Candle -->
+                    <rect x="77" y="42" width="6" height="28" fill="#FFB7C5" rx="2" stroke="#222" stroke-width="1.5"/>
+                    <path class="candle-flame" d="M 80,18 C 75,30 80,42 80,42 C 80,42 85,30 80,18 Z" fill="#FFB703"/>
+                </svg>
+            </div>
+
+            <!-- Grand Finale Text Content -->
+            <div class="finale-text-wrapper">
+                <h1 class="grand-heading scale-up-text" id="grand-title">🎂 Happy Birthday Anbi 🎂</h1>
+                <p class="emotional-quote fade-in-quote" id="grand-quote">May your smile always shine brighter than the stars. ✨</p>
+            </div>
+
+            <!-- Return button to celebrate again -->
+            <button id="replay-btn" class="replay-btn hidden">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+                </svg>
+                <span>Celebrate Again</span>
+            </button>
+        </div>
+
+    </div>
+
+    <!-- Inject High-Performance Javascript Core -->
+    <script src="script.js"></script>
+</body>
+</html>
